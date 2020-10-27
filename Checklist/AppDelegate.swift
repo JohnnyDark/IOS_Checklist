@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 }
+
+//MARK:- app前台运行时收到local Notification，可以进行相关的任务处理，在如下方法中
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("收到 通知")

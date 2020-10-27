@@ -135,8 +135,9 @@ extension ItemDetailViewController{
         return true
     }
     
+    //点击输入框输入内容时隐藏date picker
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        hideDatePicker() //点击输入框输入内容时隐藏date picker
+        hideDatePicker()
     }
 }
 

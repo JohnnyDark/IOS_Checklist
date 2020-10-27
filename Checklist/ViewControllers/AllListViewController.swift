@@ -43,10 +43,11 @@ class AllListsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataModel.lists.count
     }
-    
+    //使用自定义cell的逻辑
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let checklist = dataModel.lists[indexPath.row]
         let cell: UITableViewCell!
+        //获取cell，如果有可重用则重用，无则创建新的
         if let c = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
             cell = c
         }else{
@@ -104,6 +105,7 @@ class AllListsViewController: UITableViewController {
     }
 }
 
+//MARK:- 实现ListDetailViewController的代理方法
 extension AllListsViewController: ListDetailViewControllerDelegate{
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
         navigationController?.popViewController(animated: true)
@@ -127,6 +129,7 @@ extension AllListsViewController: ListDetailViewControllerDelegate{
     }
 }
 
+//MARK:- 实现navigation controller的代理方法，解决启动后自动切换到上次屏幕问题
 extension AllListsViewController: UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController === self{ //从ChecklistViewController界面返回到AllListViewController界面，则无需保存index

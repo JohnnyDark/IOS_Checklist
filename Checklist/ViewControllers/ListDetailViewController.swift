@@ -20,7 +20,7 @@ class ListDetailViewController: UITableViewController {
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     
-    var iconName = "Folder"
+    var iconName = "Folder" //设置默认的icon name
     var checklistToEdit: Checklist?
     weak var delegate: ListDetailViewControllerDelegate?
 
@@ -73,6 +73,7 @@ class ListDetailViewController: UITableViewController {
     }
 }
 
+//MARK:- 实现textField的代理方法
 extension ListDetailViewController: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text!
@@ -88,7 +89,7 @@ extension ListDetailViewController: UITextFieldDelegate{
         return true
     }
 }
-
+//MARK:- 实现IconPicker的代理方法
 extension ListDetailViewController: IconPickerViewControllerDelegate{
     func iconPicker(_ controller: IconPickerViewController, didPick iconName: String) {
         self.iconName = iconName
