@@ -18,8 +18,10 @@ class IconPickerViewController: UITableViewController {
       "Drinks", "Folder", "Groceries", "Inbox", "Photos", "Trips"]
         
     weak var delegate: IconPickerViewControllerDelegate?
+    var iconName: String!
         
     override func viewDidLoad() {
+        
         super.viewDidLoad()
     }
     
@@ -30,12 +32,22 @@ class IconPickerViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IconCell", for: indexPath)
         let iconName = iconNames[indexPath.row]
-        cell.imageView!.image = UIImage(named: iconName)
-        cell.textLabel!.text = iconName
+//        cell.imageView!.image = UIImage(named: iconName)
+//        cell.textLabel!.text = iconName
+        configure(for: cell, with: iconName)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.iconPicker(self, didPick: iconNames[indexPath.row])
+    }
+    
+    //MARK:- Helper method
+    func configure(for cell:UITableViewCell, with iconName: String ){
+        cell.imageView!.image = UIImage(named: iconName)
+        cell.textLabel!.text = iconName
+        if self.iconName == iconName{
+            cell.accessoryType = .checkmark
+        }
     }
 }

@@ -50,6 +50,7 @@ class ListDetailViewController: UITableViewController {
         if segue.identifier == "PickIcon"{
             let controller = segue.destination as! IconPickerViewController
             controller.delegate = self
+            controller.iconName = iconName
         }
     }
     
